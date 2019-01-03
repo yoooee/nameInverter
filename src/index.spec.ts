@@ -5,8 +5,9 @@ const invertName = (name: string): string => {
     const names: Array<string> = name.trim().split(/\s+/);
     if (names.length == 1) {
       return names[0];
+    } else {
+      return `${names[1]}, ${names[0]}`;
     }
-    return `${names[1]}, ${names[0]}`;
   }
 }
 
