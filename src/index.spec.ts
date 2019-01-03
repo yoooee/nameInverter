@@ -1,7 +1,12 @@
 const invertName = (name: string): string => {
-  if ((name == null) || (name.length <= 0))
+  if ((name == null) || (name.length <= 0)) {
     return "";
-  return name;
+  } else {
+    const names: Array<string> = name.split(' ');
+    if (names.length == 2) 
+      return `${names[1]}, ${names[0]}`;
+    return name;
+  }
 }
 
 describe('nameInverter', () => {
@@ -19,6 +24,10 @@ describe('nameInverter', () => {
 
   it('given a Simple name, return a Simple name', () => {
     assertInverted('Name', 'Name');
+  });
+
+  it('given First Last, return Last First', () => {
+    assertInverted('First Last', 'Last, First');
   });
 
 });
