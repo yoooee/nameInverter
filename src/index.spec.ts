@@ -3,6 +3,10 @@ const invertName = (name: string): string => {
     return "";
   } else {
     const names: Array<string> = name.trim().split(/\s+/);
+    if ((names.length > 1) && (names[0] === 'Mr.')) {
+      names.shift();
+    }
+
     if (names.length == 1) {
       return names[0];
     } else {
@@ -38,6 +42,10 @@ describe('nameInverter', () => {
 
   it('given First Last with extra spaces, return Last First', () => {
     assertInverted('   First   Last   ', 'Last, First');
+  });
+
+  it('ignores Honorific', () => {
+    assertInverted('Mr. First Last', 'Last, First');
   });
 
 });
