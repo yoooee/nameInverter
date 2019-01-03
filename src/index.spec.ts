@@ -8,12 +8,16 @@ describe('nameInverter', () => {
   beforeEach(() => {
   });
 
+  const assertInverted = (originalName: string, invertedName: string) => {
+    expect(invertName(originalName)).toEqual(invertedName);
+  }
+
   it('given Null, returns Empty string', () => {
-    expect(invertName(null)).toEqual('');
+    assertInverted(null, '');
   });
 
   it('given Empty string, returns Empty string', () => {
-    expect(invertName('')).toEqual('');
+    assertInverted('', '');
   });
 
 });
