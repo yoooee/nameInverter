@@ -3,11 +3,6 @@ const invertName = (name: string): string => {
 }
 
 describe('nameInverter', () => {
-  let subject;
-
-  beforeEach(() => {
-  });
-
   const assertInverted = (originalName: string, invertedName: string) => {
     expect(invertName(originalName)).toEqual(invertedName);
   }
