@@ -1,7 +1,7 @@
 const invertName = (name: string): string => {
-  if ((name != null) && (name.length > 0))
-    return name;
-  return "";
+  if ((name == null) || (name.length <= 0))
+    return "";
+  return name;
 }
 
 describe('nameInverter', () => {
