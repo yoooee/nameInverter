@@ -1,13 +1,16 @@
-import { Test } from './index';
+const invertName = (name: string): string => {
+  return "";
+}
 
-describe('Test', () => {
+describe('nameInverter', () => {
   let subject;
 
   beforeEach(() => {
-    subject = new Test();
   });
 
-  it('says hi and returns true', () => {
-    expect(subject.sayHi()).toEqual(true);
+  it('given Null, returns Emptry String', () => {
+    expect(invertName(null)).toEqual('');
   });
+
+
 });
