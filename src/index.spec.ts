@@ -2,10 +2,9 @@ const invertName = (name: string): string => {
   if ((name == null) || (name.length <= 0)) {
     return "";
   } else {
-    name = name.trim();
-    const names: Array<string> = name.split(/\s+/);
+    const names: Array<string> = name.trim().split(/\s+/);
     if (names.length == 1) {
-      return name;
+      return names[0];
     }
     return `${names[1]}, ${names[0]}`;
   }
