@@ -2,6 +2,7 @@ const invertName = (name: string): string => {
   if ((name == null) || (name.length <= 0)) {
     return "";
   } else {
+    name = name.trim();
     const names: Array<string> = name.split(' ');
     if (names.length == 1) {
       return name;
@@ -29,6 +30,10 @@ describe('nameInverter', () => {
 
   it('given First Last, return Last First', () => {
     assertInverted('First Last', 'Last, First');
+  });
+
+  it('given a Simple name with spaces, return a Simple name without spaces', () => {
+    assertInverted(' Name ', 'Name');
   });
 
 });
