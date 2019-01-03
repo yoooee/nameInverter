@@ -1,9 +1,13 @@
+const isHonorific = (names) => {
+  return names[0] === 'Mr.';
+}
+
 const invertName = (name: string): string => {
   if ((name == null) || (name.length <= 0)) {
     return "";
   } else {
     const names: Array<string> = name.trim().split(/\s+/);
-    if ((names.length > 1) && (names[0] === 'Mr.')) {
+    if ((names.length > 1) && (isHonorific(names))) {
       names.shift();
     }
 
