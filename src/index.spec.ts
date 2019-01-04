@@ -1,7 +1,11 @@
 import { NameInverter } from './index';
 
 describe('nameInverter', () => {
-  const nameInverter: NameInverter = new NameInverter();
+  let nameInverter: NameInverter;
+
+  beforeEach(() => {
+    nameInverter = new NameInverter();
+  });
 
   const assertInverted = (originalName: string, invertedName: string) => {
     expect(nameInverter.invertName(originalName)).toEqual(invertedName);
