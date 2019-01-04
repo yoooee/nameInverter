@@ -1,53 +1,10 @@
-const splitNames = (name) => {
-  return name.trim().split(/\s+/);
-}
-
-const isHonorific = (word) => {
-  const regexp = RegExp('Mr\.|Mrs\.');
-  return regexp.test(word);
-}
-
-
-const removeHonorifics = (names: Array<string>): Array<string> => {
-  if ((names.length > 1) && (isHonorific(names[0])))
-    names.shift();
-  return names;
-}
-
-const formatMultiElementName = (names: Array<string>) => {
-  const postNominal: string = getPostNominals(names);
-  const firstName: string = names[0];
-  const lastName: string = names[1];
-  return `${lastName}, ${firstName} ${postNominal}`.trim();
-}
-
-const formatName = (names: Array<string>) => {
-  if (names.length == 1) {
-    return names[0];
-  } else {
-    return formatMultiElementName(names);
-  }
-}
-
-const invertName = (name: string): string => {
-  if ((name == null) || (name.length <= 0))
-    return "";
-  else
-    return formatName(removeHonorifics(splitNames(name)));
-}
-
-const getPostNominals = (names: Array<string>): string => {
-  let postNominalString: string = '';
-  if (names.length > 2) {
-    const postNominals: Array<string> = names.slice(2, names.length);
-    postNominalString = postNominals.join(' ');
-  }
-  return postNominalString;
-}
+import { NameInverter } from './index';
 
 describe('nameInverter', () => {
+  const nameInverter: NameInverter = new NameInverter();
+
   const assertInverted = (originalName: string, invertedName: string) => {
-    expect(invertName(originalName)).toEqual(invertedName);
+    expect(nameInverter.invertName(originalName)).toEqual(invertedName);
   }
 
   it('given Null, returns Empty string', () => {
