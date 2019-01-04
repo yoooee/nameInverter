@@ -13,15 +13,17 @@ const getPostNominals = (names): string => {
   return postNominals.join(' ');
 }
 
+const removeHonorifics = (names: Array<string>) => {
+  if ((names.length > 1) && (isHonorific(names[0])))
+    names.shift();
+}
+
 const invertName = (name: string): string => {
   if ((name == null) || (name.length <= 0)) {
     return "";
   } else {
     const names: Array<string> = splitNames(name);
-    if ((names.length > 1) && (isHonorific(names[0]))) {
-      names.shift();
-    }
-
+    removeHonorifics(names);
     if (names.length == 1) {
       return names[0];
     } else {
