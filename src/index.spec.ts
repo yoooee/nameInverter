@@ -3,7 +3,8 @@ const splitNames = (name) => {
 }
 
 const isHonorific = (word) => {
-  return word === 'Mr.';
+  const regexp = RegExp('Mr\.|Mrs\.');
+  return regexp.test(word);
 }
 
 const invertName = (name: string): string => {
@@ -18,7 +19,11 @@ const invertName = (name: string): string => {
     if (names.length == 1) {
       return names[0];
     } else {
-      return `${names[1]}, ${names[0]}`;
+      let postNominal: string = '';
+      if (names.length > 2) {
+        postNominal = names[2];
+      }
+      return `${names[1]}, ${names[0]} ${postNominal}`.trim();
     }
   }
 }
@@ -52,8 +57,13 @@ describe('nameInverter', () => {
     assertInverted('   First   Last   ', 'Last, First');
   });
 
-  it('ignores Honorific', () => {
+  it('ignores Honorifics', () => {
     assertInverted('Mr. First Last', 'Last, First');
+    assertInverted('Mrs. First Last', 'Last, First');
+  });
+
+  it('postNominals stay at end', () => {
+    assertInverted('First Last Sr.', 'Last, First Sr.');
   });
 
 });
