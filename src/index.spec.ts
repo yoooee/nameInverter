@@ -18,6 +18,10 @@ const removeHonorifics = (names: Array<string>) => {
     names.shift();
 }
 
+const formatName = (names: Array<string>, postNominal: string) => {
+  return `${names[1]}, ${names[0]} ${postNominal}`.trim();
+}
+
 const invertName = (name: string): string => {
   if ((name == null) || (name.length <= 0)) {
     return "";
@@ -31,7 +35,7 @@ const invertName = (name: string): string => {
       if (names.length > 2) {
         postNominal = getPostNominals(names);
       }
-      return `${names[1]}, ${names[0]} ${postNominal}`.trim();
+      return formatName(names, postNominal);
     }
   }
 }
