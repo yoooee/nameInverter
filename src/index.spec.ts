@@ -28,19 +28,18 @@ const formatMultiElementName = (names: Array<string>) => {
 }
 
 const formatName = (names: Array<string>) => {
-    if (names.length == 1) {
-      return names[0];
-    } else {
-      return formatMultiElementName(names);
-    }
+  if (names.length == 1) {
+    return names[0];
+  } else {
+    return formatMultiElementName(names);
+  }
 }
 
 const invertName = (name: string): string => {
-  if ((name == null) || (name.length <= 0)) {
+  if ((name == null) || (name.length <= 0))
     return "";
-  } else {
+  else
     return formatName(removeHonorifics(splitNames(name)));
-  }
 }
 
 describe('nameInverter', () => {
