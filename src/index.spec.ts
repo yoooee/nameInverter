@@ -15,13 +15,10 @@ const removeHonorifics = (names: Array<string>): Array<string> => {
 }
 
 const formatMultiElementName = (names: Array<string>) => {
-  let postNominal: string = '';
-  if (names.length > 2) {
-    let postNominals: Array<string>;
-    postNominals = names.slice(2, names.length);
-    postNominal = postNominals.join(' ');
-  }
-  return `${names[1]}, ${names[0]} ${postNominal}`.trim();
+  const postNominal: string = getPostNominals(names);
+  const firstName: string = names[0];
+  const lastName: string = names[1];
+  return `${lastName}, ${firstName} ${postNominal}`.trim();
 }
 
 const formatName = (names: Array<string>) => {
@@ -37,6 +34,16 @@ const invertName = (name: string): string => {
     return "";
   else
     return formatName(removeHonorifics(splitNames(name)));
+}
+
+const getPostNominals = (names: Array<string>): string => {
+  let postNominal: string = '';
+  if (names.length > 2) {
+    let postNominals: Array<string>;
+    postNominals = names.slice(2, names.length);
+    postNominal = postNominals.join(' ');
+  }
+  return postNominal;
 }
 
 describe('nameInverter', () => {
