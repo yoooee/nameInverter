@@ -7,6 +7,12 @@ const isHonorific = (word) => {
   return regexp.test(word);
 }
 
+const getPostNominals = (names): string => {
+  let postNominals: Array<string>;
+  postNominals = names.slice(2, names.length);
+  return postNominals.join(' ');
+}
+
 const invertName = (name: string): string => {
   if ((name == null) || (name.length <= 0)) {
     return "";
@@ -21,7 +27,7 @@ const invertName = (name: string): string => {
     } else {
       let postNominal: string = '';
       if (names.length > 2) {
-        postNominal = names[2];
+        postNominal = getPostNominals(names);
       }
       return `${names[1]}, ${names[0]} ${postNominal}`.trim();
     }
@@ -64,6 +70,7 @@ describe('nameInverter', () => {
 
   it('postNominals stay at end', () => {
     assertInverted('First Last Sr.', 'Last, First Sr.');
+    assertInverted('First Last BS. Phd.', 'Last, First BS. Phd.');
   });
 
 });
