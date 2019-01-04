@@ -7,11 +7,6 @@ const isHonorific = (word) => {
   return regexp.test(word);
 }
 
-const getPostNominals = (names): string => {
-  let postNominals: Array<string>;
-  postNominals = names.slice(2, names.length);
-  return postNominals.join(' ');
-}
 
 const removeHonorifics = (names: Array<string>): Array<string> => {
   if ((names.length > 1) && (isHonorific(names[0])))
@@ -22,7 +17,9 @@ const removeHonorifics = (names: Array<string>): Array<string> => {
 const formatMultiElementName = (names: Array<string>) => {
   let postNominal: string = '';
   if (names.length > 2) {
-    postNominal = getPostNominals(names);
+    let postNominals: Array<string>;
+    postNominals = names.slice(2, names.length);
+    postNominal = postNominals.join(' ');
   }
   return `${names[1]}, ${names[0]} ${postNominal}`.trim();
 }
