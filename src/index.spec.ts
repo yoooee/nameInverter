@@ -18,12 +18,20 @@ const removeHonorifics = (names: Array<string>) => {
     names.shift();
 }
 
-const formatName = (names: Array<string>) => {
+const formatMultiElementName = (names: Array<string>) => {
   let postNominal: string = '';
   if (names.length > 2) {
     postNominal = getPostNominals(names);
   }
   return `${names[1]}, ${names[0]} ${postNominal}`.trim();
+}
+
+const formatName = (names: Array<string>) => {
+    if (names.length == 1) {
+      return names[0];
+    } else {
+      return formatMultiElementName(names);
+    }
 }
 
 const invertName = (name: string): string => {
@@ -32,11 +40,7 @@ const invertName = (name: string): string => {
   } else {
     const names: Array<string> = splitNames(name);
     removeHonorifics(names);
-    if (names.length == 1) {
-      return names[0];
-    } else {
-      return formatName(names);
-    }
+    return formatName(names);
   }
 }
 
