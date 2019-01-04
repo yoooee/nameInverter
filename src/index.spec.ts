@@ -37,13 +37,12 @@ const invertName = (name: string): string => {
 }
 
 const getPostNominals = (names: Array<string>): string => {
-  let postNominal: string = '';
+  let postNominalString: string = '';
   if (names.length > 2) {
-    let postNominals: Array<string>;
-    postNominals = names.slice(2, names.length);
-    postNominal = postNominals.join(' ');
+    const postNominals: Array<string> = names.slice(2, names.length);
+    postNominalString = postNominals.join(' ');
   }
-  return postNominal;
+  return postNominalString;
 }
 
 describe('nameInverter', () => {
