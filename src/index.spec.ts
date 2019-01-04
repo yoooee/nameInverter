@@ -73,4 +73,8 @@ describe('nameInverter', () => {
     assertInverted('First Last BS. Phd.', 'Last, First BS. Phd.');
   });
 
+  it('integration', () => {
+    assertInverted('   Robert     Martin    III   esq.    ', 'Martin, Robert III esq.');
+  });
+
 });
