@@ -13,9 +13,10 @@ const getPostNominals = (names): string => {
   return postNominals.join(' ');
 }
 
-const removeHonorifics = (names: Array<string>) => {
+const removeHonorifics = (names: Array<string>): Array<string> => {
   if ((names.length > 1) && (isHonorific(names[0])))
     names.shift();
+  return names;
 }
 
 const formatMultiElementName = (names: Array<string>) => {
@@ -38,9 +39,7 @@ const invertName = (name: string): string => {
   if ((name == null) || (name.length <= 0)) {
     return "";
   } else {
-    const names: Array<string> = splitNames(name);
-    removeHonorifics(names);
-    return formatName(names);
+    return formatName(removeHonorifics(splitNames(name)));
   }
 }
 
