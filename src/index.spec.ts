@@ -2,8 +2,8 @@ const splitNames = (name) => {
   return name.trim().split(/\s+/);
 }
 
-const isHonorific = (names) => {
-  return names[0] === 'Mr.';
+const isHonorific = (word) => {
+  return word === 'Mr.';
 }
 
 const invertName = (name: string): string => {
@@ -11,7 +11,7 @@ const invertName = (name: string): string => {
     return "";
   } else {
     const names: Array<string> = splitNames(name);
-    if ((names.length > 1) && (isHonorific(names))) {
+    if ((names.length > 1) && (isHonorific(names[0]))) {
       names.shift();
     }
 
